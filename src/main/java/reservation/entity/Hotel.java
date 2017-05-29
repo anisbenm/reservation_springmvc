@@ -6,6 +6,7 @@
 package reservation.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -30,7 +31,7 @@ public class Hotel implements Serializable {
     @Embedded
     private Adresse adresse;
     @OneToMany(mappedBy = "hotel")
-    List<Chambre> chambres;
+    private List<Chambre> chambres = new ArrayList<>();
     
 
     public Long getId() {

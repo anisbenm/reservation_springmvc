@@ -6,6 +6,7 @@
 package reservation.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,7 +36,7 @@ public class Chambre implements Serializable {
 
     @ManyToMany
     @JoinTable
-    private List<Reservation> reservations;
+    private List<Reservation> reservations= new ArrayList<>();
 
     public Long getId() {
         return id;

@@ -9,6 +9,8 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,24 +24,47 @@ import javax.persistence.Temporal;
  * @author Administrateur
  */
 @Entity
-public class Reservation implements Serializable {
-
+public class Reservation implements Serializable {/**************************************************/
+    public enum EtatReservation {
+        A_PAYER,
+        PAYEE,
+        ANNULEE
+    };
+    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date date;
+
+    public EtatReservation getEtatReservation() {
+        return etatReservation;
+    }
+
+    public void setEtatReservation(EtatReservation etatReservation) {
+        this.etatReservation = etatReservation;
+    }
     private Double prix;
-    private enum statut {libre,reservee};
+    @Enumerated(EnumType.STRING)
+    private EtatReservation etatReservation;
+
     @ManyToMany(mappedBy = "reservations")
-    List<Chambre> chambres;
-    
+    private List<Chambre> chambres;
+
     @ManyToOne
     @JoinColumn
-    Client client;
-    
+    private Client client;
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
     public Long getId() {
         return id;
     }
@@ -71,8 +96,6 @@ public class Reservation implements Serializable {
     public void setChambres(List<Chambre> chambres) {
         this.chambres = chambres;
     }
-    
-    
 
     @Override
     public int hashCode() {
@@ -98,5 +121,5 @@ public class Reservation implements Serializable {
     public String toString() {
         return "reservation.entity.Reservation[ id=" + id + " ]";
     }
-    
+
 }

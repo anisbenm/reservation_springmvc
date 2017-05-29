@@ -5,10 +5,14 @@
  */
 package reservation.service;
 
+import java.io.Serializable;
+import org.springframework.data.repository.CrudRepository;
+import reservation.entity.Client;
+
 /**
  *
  * @author Administrateur
  */
-public interface ClientCrudService {
+public interface ClientCrudService extends CrudRepository<Client, Long>{
     
 }

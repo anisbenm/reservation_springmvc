@@ -15,7 +15,10 @@
     <body>
         <c:import url="_MENU.jsp"></c:import>
     <contenue>
-        bien venue sur notre sit fabuleu
+         <thead><th>id</th><th>nom</th><th>adresse</th><th>code postale</th><th>action</th></thead>
+    <c:forEach items="${hotels}" var="h">
+     <tr> <td>${h.id}</td><td>${h.nom}</td><td>${h.adresse}</td><td>${h.codePosta}</td><td><a href="supprimer_hotel?idHotel=${h.id}">supprimer</a></td></tr>
+    </c:forEach>
     </contenue>
         <c:import url="_PIED.jsp"></c:import>
     </body>

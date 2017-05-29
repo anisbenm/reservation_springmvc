@@ -5,10 +5,13 @@
  */
 package reservation.service;
 
+import org.springframework.data.repository.CrudRepository;
+import reservation.entity.Reservation;
+
 /**
  *
  * @author Administrateur
  */
-public interface ReservationCrudService {
+public interface ReservationCrudService extends CrudRepository<Reservation, Long>{
     
 }
