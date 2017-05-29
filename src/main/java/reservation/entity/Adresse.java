@@ -13,9 +13,51 @@ import javax.persistence.Embeddable;
  */
 @Embeddable
 public class Adresse {
-    Short num;
-    String rue;
-    String localite;
-    Long codePostal;
-    String pays;
+    private Short num;
+    private String rue;
+    private String localite;
+    private Long codePostal;
+    private String pays;
+
+    public Short getNum() {
+        return num;
+    }
+
+    public void setNum(Short num) {
+        this.num = num;
+    }
+
+    public String getRue() {
+        return rue;
+    }
+
+    public void setRue(String rue) {
+        this.rue = rue;
+    }
+
+    public String getLocalite() {
+        return localite;
+    }
+
+    public void setLocalite(String localite) {
+        this.localite = localite;
+    }
+
+    public Long getCodePostal() {
+        return codePostal;
+    }
+
+    public void setCodePostal(Long codePostal) {
+        this.codePostal = codePostal;
+    }
+
+    public String getPays() {
+        return pays;
+    }
+
+    public void setPays(String pays) {
+        this.pays = pays;
+    }
+
+    
 }

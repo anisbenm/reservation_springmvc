@@ -6,6 +6,7 @@
 package reservation.controller;
 
 import java.util.List;
+import javax.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,4 +30,9 @@ public class HotelController {
         return "hotel/lister.jsp";
     }
     
+    @RequestMapping(value = "/hotel/supprimer/{hotelId}")
+    public String supprimer(@PathParam(value ="hotelId")long id){
+        service.delete(id);
+        return "redirect:/hotel/lister";
+    }
 }
