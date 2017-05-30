@@ -18,7 +18,7 @@
             <table border="2px">
                 <thead><th>id</th><th>nom</th><th>adresse</th><th>action</th></thead>
                 <c:forEach items="${hotels}" var="h">
-                <tr> <td>${h.id}</td><td>${h.nom}</td><td>${h.adresse.rue}</td>
+                <tr> <td>${h.id}</td><td>${h.nom}</td><td>${h.adresse.localite}</td>
                     <td>
                         <a href="<spring:url value='/hotel/supprimer/${h.id}'/>">supprimer</a>
                         </td></tr>
