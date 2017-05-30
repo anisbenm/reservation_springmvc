@@ -19,17 +19,15 @@ import reservation.service.HotelCrudService;
 
 /**
  *
- * @author Administrateur
+ * @author anis
  */
 @Controller
-@RequestMapping(value = "/hotel", method = RequestMethod.GET)
+@RequestMapping(value = "/hotel")
 public class HotelController {
     
      @RequestMapping(value = "/ajouter")
     public String ajouterGet( Model model) {
-        //recuperer l'hotel à modifier
         Hotel h = new Hotel();
-
         // passer cet hotel à la vue
         model.addAttribute("hotel", h);
         return "hotel/ajouter.jsp";
@@ -37,7 +35,7 @@ public class HotelController {
 
     @Autowired
     private HotelCrudService service;
-        @RequestMapping(value = "/ajoutExe", method = RequestMethod.POST)
+        @RequestMapping(value = "/ajoutExe", method = RequestMethod.POST)//par defaut get
     public String ajouter(@ModelAttribute("hotel") Hotel h) {
         //persister
         service.save(h);
