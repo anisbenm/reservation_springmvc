@@ -21,6 +21,6 @@ public class ExpRoutParamContr {
     public String ajouter(@PathVariable("age")long a , @PathVariable("nom")String n){
         System.out.println(String.format("je m'appelle %s et j'ai %d", n,a));
         
-        return "kakawette.jsp";
+        return "/kakawette.jsp";
     }
 }

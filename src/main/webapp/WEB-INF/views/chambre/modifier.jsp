@@ -7,8 +7,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<c:set var="pathAjout">
-    <spring:url value="/chambre/ajouter"/>
+<c:set var="pathModif">
+    <spring:url value="/chambre/modifier"/>
 </c:set>
 <!DOCTYPE html>
 <html>
@@ -18,18 +18,19 @@
     </head>
     <body>
         <c:import url="../_MENU.jsp"></c:import>
-    <contenue>
-    <form:form modelAttribute="chambre" action="${pathAjout}">
-            
-            <label>Nom Chambre : </label>
+        <contenue>
+        <form:form modelAttribute="chambre" action="${pathModif}">
+            <form:hidden path="id" ></form:hidden>
+                <label>Nom Chambre : </label>
             <form:input path="nom"/>
             <label>Prix : </label>
             <form:input path="prix"/>
             <label>Hotel : </label>
             <form:select items="${hotels}" itemValue="id" itemLabel="nom" path="hotel.id"></form:select>
-            <input type="Submit"/>
+                <input type="Submit"/>
         </form:form>        
     </contenue>
-        <c:import url="../_PIED.jsp"></c:import>
-    </body>
+    <c:import url="../_PIED.jsp"></c:import>
+</body>
 </html>
+

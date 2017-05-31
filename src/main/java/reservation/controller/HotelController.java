@@ -6,7 +6,6 @@
 package reservation.controller;
 
 import java.util.List;
-import javax.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +29,7 @@ public class HotelController {
         Hotel h = new Hotel();
         // passer cet hotel à la vue
         model.addAttribute("hotel", h);
-        return "hotel/ajouter.jsp";
+        return "/hotel/ajouter.jsp";
     }  
 
     @Autowired
@@ -56,14 +55,14 @@ public class HotelController {
 
         // passer cet hotel à la vue
         model.addAttribute("hotel", h);
-        return "hotel/modifier.jsp";
+        return "/hotel/modifier.jsp";
     }
 
     @RequestMapping(value = "/lister")
     public String lister(Model model) {
         List<Hotel> hotels = (List<Hotel>) service.findAll();
         model.addAttribute("hotels", hotels);
-        return "hotel/lister.jsp";
+        return "/hotel/lister.jsp";
     }
 
     @RequestMapping(value = "/supprimer/{hotelId}")
