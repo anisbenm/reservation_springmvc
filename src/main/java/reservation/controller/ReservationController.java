@@ -13,10 +13,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import reservation.entity.Hotel;
+import reservation.dto.ReservationDTO;
+import reservation.entity.Chambre;
 import reservation.entity.Reservation;
+import reservation.service.ChambreCrudService;
 import reservation.service.ClientCrudService;
-import reservation.service.HotelCrudService;
 import reservation.service.ReservationCrudService;
 
 /**
@@ -26,26 +27,44 @@ import reservation.service.ReservationCrudService;
 @Controller
 @RequestMapping(value = "/reservation")
 public class ReservationController {
-     
+
     @Autowired
     private ReservationCrudService service;
     @Autowired
     private ClientCrudService clientService;
-            
-     @RequestMapping(value = "/ajouter")
-    public String ajouterGet( Model model) {
-        Reservation r=new Reservation();
-         // passer cet hotel à la vue
-        model.addAttribute("reservation", r);
+    @Autowired
+    private ChambreCrudService chambreService;
+
+    @RequestMapping(value = "/ajouter")
+    public String ajouterGet(Model model) {
+        ReservationDTO rDTO = new ReservationDTO();
+        // passer cet hotel à la vue
+        model.addAttribute("rese", rDTO);
         model.addAttribute("clients", clientService.findAll());
+        model.addAttribute("chambres", chambreService.findAll());
         model.addAttribute("etats", Reservation.EtatReservation.values());
         return "/reservation/ajouter.jsp";
-    }  
+    }
 
     @RequestMapping(value = "/ajouter", method = RequestMethod.POST)//par defaut get
-    public String ajouter(@ModelAttribute("reservation") Reservation r) {
+    public String ajouter(@ModelAttribute("rese") ReservationDTO rDTO) {
         //persister
+        Reservation r = new Reservation();
+        r.setClient(rDTO.getClient());
+        r.setDate(rDTO.getDate());
+        r.setEtatReservation(rDTO.getEtatReservation());
+        r.setPrix(rDTO.getPrix());
+        System.out.println("********************************"+rDTO.getChambres());
+       
+        if(rDTO.getChambres()==null)
+            return "redirect:/reservation/lister";
+        for (long i : rDTO.getChambres()) {
+            Chambre c =chambreService.findOne(i);
+            c.getReservations().add(r);
+            r.getChambres().add(c);
+        }
         service.save(r);
+//        chambreService.findOne(id).getReservations().add(r);
         return "redirect:/reservation/lister";
     }
 

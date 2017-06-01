@@ -34,8 +34,7 @@ public class Chambre implements Serializable {
     @JoinColumn
     private Hotel hotel;
 
-    @ManyToMany
-    @JoinTable
+    @ManyToMany(mappedBy = "chambres")
     private List<Reservation> reservations= new ArrayList<>();
 
     public Long getId() {
@@ -76,7 +75,7 @@ public class Chambre implements Serializable {
 
     @Override
     public String toString() {
-        return "reservation.entity.Chambre[ id=" + id + " ]";
+        return String.format("Chambre %s Hotel %s", getNom(),hotel.getNom());
     }
 
     public String getNom() {

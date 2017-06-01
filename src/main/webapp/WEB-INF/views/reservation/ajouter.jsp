@@ -19,9 +19,11 @@
     <body>
         <c:import url="../_MENU.jsp"></c:import>
     <contenue>
-    <form:form modelAttribute="reservation" action="${pathAjout}">
+    <form:form modelAttribute="rese" action="${pathAjout}">
             <label>Client</label>
             <form:select items="${clients}" itemValue="id" itemLabel="nom" path="client.id"/><br/>
+            <label>Chambre</label>
+            <form:checkboxes items="${chambres}" itemValue="id"  path="chambres"/><br/>
             <label>Date</label>
             <form:input  path="date"/><br/>
             <label>Prix : </label>
