@@ -97,5 +97,5 @@ public class ReservationController {
         service.delete(id);
         return "redirect:/reservation/lister";//envoi une repense au client pour qu il emmet une requete get
     }
-
+//
 }
