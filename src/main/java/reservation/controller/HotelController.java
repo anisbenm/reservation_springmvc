@@ -23,18 +23,20 @@ import reservation.service.HotelCrudService;
 @Controller
 @RequestMapping(value = "/hotel")
 public class HotelController {
+    @Autowired
+    private HotelCrudService service;
     
-     @RequestMapping(value = "/ajouter")
-    public String ajouterGet( Model model) {
+    @RequestMapping(value = "/ajouter")
+    public String ajouterGet(Model model) {
         Hotel h = new Hotel();
         // passer cet hotel à la vue
         model.addAttribute("hotel", h);
         return "/hotel/ajouter.jsp";
-    }  
+    }
 
-    @Autowired
-    private HotelCrudService service;
-        @RequestMapping(value = "/ajoutExe", method = RequestMethod.POST)//par defaut get
+
+
+    @RequestMapping(value = "/ajoutExe", method = RequestMethod.POST)//par defaut get
     public String ajouter(@ModelAttribute("hotel") Hotel h) {
         //persister
         service.save(h);

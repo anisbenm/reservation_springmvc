@@ -21,9 +21,11 @@
                 <tr> <td>${c.id}</td><td>${c.nom}</td><td>${c.prix}</td><td>${c.hotel.nom}</td>
                     <td>
                         <a href="<spring:url value='/chambre/supprimer/${c.id}'/>">supprimer</a>
+                        <a href="<spring:url value='/chambre/modifier/${c.id}'/>">modifier</a>
                         </td></tr>
             </c:forEach>
         </table>
+            <a href="<spring:url value='/chambre/ajouter/${r.id}'/>">ajouter</a>
     </contenue>
 
     <c:import url="../_PIED.jsp"></c:import>

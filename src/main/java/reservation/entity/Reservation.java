@@ -24,13 +24,17 @@ import javax.persistence.Temporal;
  * @author Administrateur
  */
 @Entity
-public class Reservation implements Serializable {/**************************************************/
+public class Reservation implements Serializable {
+
+    /**
+     * ***********************************************
+     */
     public enum EtatReservation {
         A_PAYER,
         PAYEE,
         ANNULEE
     };
-    
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -39,13 +43,6 @@ public class Reservation implements Serializable {/*****************************
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date date;
 
-    public EtatReservation getEtatReservation() {
-        return etatReservation;
-    }
-
-    public void setEtatReservation(EtatReservation etatReservation) {
-        this.etatReservation = etatReservation;
-    }
     private Double prix;
     @Enumerated(EnumType.STRING)
     private EtatReservation etatReservation;
@@ -56,6 +53,14 @@ public class Reservation implements Serializable {/*****************************
     @ManyToOne
     @JoinColumn
     private Client client;
+
+    public EtatReservation getEtatReservation() {
+        return etatReservation;
+    }
+
+    public void setEtatReservation(EtatReservation etatReservation) {
+        this.etatReservation = etatReservation;
+    }
 
     public Client getClient() {
         return client;
