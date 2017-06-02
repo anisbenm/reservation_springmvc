@@ -5,6 +5,7 @@
  */
 package reservation.service;
 
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import reservation.entity.Chambre;
 
@@ -13,5 +14,6 @@ import reservation.entity.Chambre;
  * @author Administrateur
  */
 public interface ChambreCrudService extends CrudRepository<Chambre, Long>{
-    
+    //rechercher chambres dont l'hotel est dans la localite priécisée et ayant une capacité>à la capacité voulu
+//    public List<Chambre> findAllBy
 }
