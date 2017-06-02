@@ -9,6 +9,9 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<c:set var="pathInscription">
+    <spring:url value="/inscription"/>
+</c:set>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,7 +21,7 @@
     <body>
         <c:import url="../_MENU.jsp"></c:import>
     <contenue>
-         <form:form modelAttribute="utilisaterur" >
+         <form:form modelAttribute="utilisateur" action="${pathInscription}">
             
             <label> Login:</label>
             <form:input path="login"/>

@@ -13,4 +13,5 @@
     <a href="<spring:url value="/deconnexion"/>">Déconnexion</a>
         </c:otherwise>
     </c:choose>
+    <a href="<spring:url value="/inscription"/>">Inscription</a>
 </div>
