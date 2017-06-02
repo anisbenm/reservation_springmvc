@@ -75,7 +75,7 @@ public class ReservationController {
         return "redirect:/reservation/lister";
     }
 
-    @RequestMapping(value = "/modifier/{id}")
+    @RequestMapping(value = "/modifier/{id}") 
     public String afficheModif(@PathVariable("id") long id, Model model) {
         //recuperer l'hotel à modifier
         Reservation r = service.findOne(id);
