@@ -15,11 +15,11 @@
     <body>
         <c:import url="_MENU.jsp"></c:import>
         <contenue>
-        <form:form modelAttribute="utilDto">
+        <form:form modelAttribute="util">
             <label>Identifiant</label>
-            <form:input path="identifiant"/>
+            <form:input path="login"/>
             <label>Mot de passe</label>
-            <form:input path="motDePasse"/>
+            <form:input path="mdpasse"/>
             <input type="submit"/>
         </form:form>
     </contenue>
