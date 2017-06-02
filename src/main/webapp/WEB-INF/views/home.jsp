@@ -16,6 +16,7 @@
         <c:import url="_MENU.jsp"></c:import>
     <contenue>
         bien venue sur notre sit fabuleu
+       
     </contenue>
         <c:import url="_PIED.jsp"></c:import>
     </body>

@@ -46,8 +46,8 @@ public class UtilisateursController {
             return "redirect:/identification";
         }
         // enregistrer en session que l'util est admin
-        session.setAttribute("Connecte", true);
-        session.setAttribute("userType",u.getType() );
+        session.setAttribute("connecte", true);
+        session.setAttribute("userType",u.getType().toString() );
         // on choisi de rediriger vers la liste des hotels
         return "redirect:/hotel/lister";
     }

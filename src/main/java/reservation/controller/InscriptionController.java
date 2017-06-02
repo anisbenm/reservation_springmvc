@@ -5,19 +5,27 @@
  */
 package reservation.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import reservation.entity.Utilisateur;
+import reservation.service.UtilisateurCrudService;
 
 /**
  *
  * @author formation
  */
 
-
+@Controller
 public class InscriptionController {
     
-    @RequestMapping(value="/inscription")
+    @Autowired
+    UtilisateurCrudService serviceUtilisateur;
+    
+    @RequestMapping(value="/inscription",method = RequestMethod.GET)
     public String inscriptionGet(Model model){
         
         Utilisateur utilisateur= new Utilisateur();
@@ -28,12 +36,13 @@ public class InscriptionController {
        
     }
     
-    public String InscriptionPost(){
-        
-        
-        
-        
-        return"";
+    @RequestMapping(value = "/inscription", method = RequestMethod.POST)
+    public String inscriptionPost(@ModelAttribute("utilisateur") Utilisateur utilisateur) {
+       
+        utilisateur.setType(Utilisateur.TypeUser.CLIENT);
+        //persister
+        serviceUtilisateur.save(utilisateur);
+        return "redirect:/identification";
     }
     
 }
