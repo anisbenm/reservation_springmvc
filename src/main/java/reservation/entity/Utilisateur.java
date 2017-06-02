@@ -8,6 +8,8 @@ package reservation.entity;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,7 +33,8 @@ public class Utilisateur implements Serializable {
     private String login;
     private String mdpasse;
     private String email;
-    private TypeUser type;
+    @Enumerated(EnumType.STRING)/////////////////////////////////parce que c'est pas numérique
+    private TypeUser type =TypeUser.CLIENT;
     
     public Long getId() {
         return id;
