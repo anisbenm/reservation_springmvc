@@ -38,16 +38,16 @@ public class UtilisateursController {
     }
 
     @RequestMapping(value = "/identification", method = RequestMethod.POST)
-    public String identificationPost(@ModelAttribute("util") UtilisateurDto dto, HttpSession session) {
+    public String identificationPost(@ModelAttribute("util") Utilisateur u, HttpSession session) {
         //revoie vers la page d'identification si pas admin/admin
-      Utilisateur user= service.findOne(Long.MIN_VALUE)
+      Utilisateur user= service.findOneByLoginAndMdpasse(u.getLogin(), u.getMdpasse());
 
-        if (!dto.getIdentifiant().equals("admin") || !dto.getMotDePasse().equals("admin")) {
+        if (user==null) {
             return "redirect:/identification";
         }
         // enregistrer en session que l'util est admin
         session.setAttribute("Connecte", true);
-        session.setAttribute("userType", );
+        session.setAttribute("userType",u.getType() );
         // on choisi de rediriger vers la liste des hotels
         return "redirect:/hotel/lister";
     }

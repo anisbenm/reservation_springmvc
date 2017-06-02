@@ -14,5 +14,6 @@ import reservation.entity.Utilisateur;
  * @author Administrateur
  */
 public interface UtilisateurCrudService extends CrudRepository<Utilisateur, Long>{
-    
+    //fonction magique
+    public Utilisateur findOneByLoginAndMdpasse(String login,String mdp);
 }
