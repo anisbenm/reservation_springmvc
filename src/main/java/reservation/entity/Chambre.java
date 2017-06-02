@@ -7,7 +7,9 @@ package reservation.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +18,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -30,6 +34,18 @@ public class Chambre implements Serializable {
     private Long id;
     private String nom;
     private Double prix;
+    
+    @Column(nullable =false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateCheckIn;
+    
+    @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateCheckOut;
+    
+    @Column(nullable = false)
+    private Integer nbPersonnes;
+    
     @ManyToOne
     @JoinColumn
     private Hotel hotel;
@@ -45,6 +61,32 @@ public class Chambre implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public Date getDateCheckIn() {
+        return dateCheckIn;
+    }
+
+    public void setDateCheckIn(Date dateCheckIn) {
+        this.dateCheckIn = dateCheckIn;
+    }
+
+    public Date getDateCheckOut() {
+        return dateCheckOut;
+    }
+
+    public void setDateCheckOut(Date dateCheckOut) {
+        this.dateCheckOut = dateCheckOut;
+    }
+
+    public Integer getNbPersonnes() {
+        return nbPersonnes;
+    }
+
+    public void setNbPersonnes(Integer nbPersonnes) {
+        this.nbPersonnes = nbPersonnes;
+    }
+    
+    
 
     public List<Reservation> getReservations() {
         return reservations;
