@@ -22,6 +22,7 @@ import reservation.service.UtilisateurCrudService;
  */
 @Controller
 public class UtilisateursController {
+
     @Autowired
     UtilisateurCrudService service;
 
@@ -40,14 +41,13 @@ public class UtilisateursController {
     @RequestMapping(value = "/identification", method = RequestMethod.POST)
     public String identificationPost(@ModelAttribute("util") Utilisateur u, HttpSession session) {
         //revoie vers la page d'identification si pas admin/admin
-      Utilisateur user= service.findOneByLoginAndMdpasse(u.getLogin(), u.getMdpasse());
+        Utilisateur user = service.findOneByLoginAndMdpasse(u.getLogin(), u.getMdpasse());
 
-        if (user==null) {
+        if (user == null) {
             return "redirect:/identification";
         }
         // enregistrer en session que l'util est admin
-        session.setAttribute("connecte", true);
-        session.setAttribute("userType",u.getType().toString() );
+        session.setAttribute("userType", user.getType().toString());
         // on choisi de rediriger vers la liste des hotels
         return "redirect:/hotel/lister";
     }

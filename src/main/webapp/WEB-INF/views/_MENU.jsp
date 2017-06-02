@@ -2,19 +2,23 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <div class="menu">
     <c:choose>
-        <c:when test="${!connecte}">
-            <a href="<spring:url value="/identification"/>">Identification</a>
-            <a href="<spring:url value="/inscription"/>">Inscription</a>
-        </c:when>
-        <c:when test="${userType}=='ADMIN'">
+
+        <c:when test="${userType=='ADMIN'}">
             <a href="<spring:url value="/hotel/lister"/>">Gestion hotels</a>
             <a href="<spring:url value="/chambre/lister"/>">Gestion chambres</a>
             <a href="<spring:url value="/client/lister"/>">Gestion clients</a>
             <a href="<spring:url value="/reservation/lister"/>">Gestion réservations</a>
             <a href="<spring:url value="/deconnexion"/>">Déconnexion</a>
         </c:when>
+        <c:when test="${userType=='CLIENT'}">
+            <a href="<spring:url value="/hotel/lister"/>">Gestion hotels</a>
+            <a href="<spring:url value="/chambre/lister"/>">Gestion chambres</a>
+            <a href="<spring:url value="/deconnexion"/>">Déconnexion</a>
+        </c:when>
         <c:otherwise>
-            <h4>Veuillez vous connecter</h4>
-    </c:otherwise>
-</c:choose>
+            <a href="<spring:url value="/identification"/>">Identification</a>
+            <a href="<spring:url value="/inscription"/>">Inscription</a>
+            ${userType}
+        </c:otherwise>        
+    </c:choose>
 </div>
