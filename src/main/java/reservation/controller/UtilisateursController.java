@@ -6,12 +6,15 @@
 package reservation.controller;
 
 import javax.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import reservation.dto.UtilisateurDto;
+import reservation.entity.Utilisateur;
+import reservation.service.UtilisateurCrudService;
 
 /**
  *
@@ -19,6 +22,8 @@ import reservation.dto.UtilisateurDto;
  */
 @Controller
 public class UtilisateursController {
+    @Autowired
+    UtilisateurCrudService service;
 
     @RequestMapping(value = "/deconnexion", method = RequestMethod.GET)
     public String deconnexion(HttpSession session) {
@@ -28,18 +33,21 @@ public class UtilisateursController {
 
     @RequestMapping(value = "/identification", method = RequestMethod.GET)
     public String identificationGET(Model model) {
-        model.addAttribute("utilDto", new UtilisateurDto());
+        model.addAttribute("util", new Utilisateur());
         return "/identification.jsp";
     }
 
     @RequestMapping(value = "/identification", method = RequestMethod.POST)
-    public String identificationPost(@ModelAttribute("utilDto") UtilisateurDto dto, HttpSession session) {
+    public String identificationPost(@ModelAttribute("util") UtilisateurDto dto, HttpSession session) {
         //revoie vers la page d'identification si pas admin/admin
+      Utilisateur user= service.findOne(Long.MIN_VALUE)
+
         if (!dto.getIdentifiant().equals("admin") || !dto.getMotDePasse().equals("admin")) {
             return "redirect:/identification";
         }
         // enregistrer en session que l'util est admin
-        session.setAttribute("adminConnecte", true);
+        session.setAttribute("Connecte", true);
+        session.setAttribute("userType", );
         // on choisi de rediriger vers la liste des hotels
         return "redirect:/hotel/lister";
     }
