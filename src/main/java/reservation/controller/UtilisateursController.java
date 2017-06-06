@@ -43,11 +43,11 @@ public class UtilisateursController {
         Utilisateur user = service.findOneByLoginAndMdpasse(u.getLogin(), u.getMdpasse());
 
         if (user == null) {
-            return "redirect:/identification";
+            return "redirect:/reservationClient";
         }
         // enregistrer en session que l'util est admin
         session.setAttribute("userType", user.getType().toString());
         // on choisi de rediriger vers la liste des hotels
-        return "redirect:/hotel/lister";
+        return "redirect:/reservationClient";
     }
 }

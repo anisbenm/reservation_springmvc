@@ -35,13 +35,7 @@ public class Chambre implements Serializable {
     private String nom;
     private Double prix;
     
-    @Column(nullable =false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dateCheckIn;
     
-    @Column(nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dateCheckOut;
     
     @Column(nullable = false)
     private Integer nbPersonnes;
@@ -61,21 +55,6 @@ public class Chambre implements Serializable {
         this.id = id;
     }
 
-    public Date getDateCheckIn() {
-        return dateCheckIn;
-    }
-
-    public void setDateCheckIn(Date dateCheckIn) {
-        this.dateCheckIn = dateCheckIn;
-    }
-
-    public Date getDateCheckOut() {
-        return dateCheckOut;
-    }
-
-    public void setDateCheckOut(Date dateCheckOut) {
-        this.dateCheckOut = dateCheckOut;
-    }
 
     public Integer getNbPersonnes() {
         return nbPersonnes;

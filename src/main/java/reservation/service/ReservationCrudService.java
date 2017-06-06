@@ -6,6 +6,7 @@
 package reservation.service;
 
 import org.springframework.data.repository.CrudRepository;
+import reservation.entity.Client;
 import reservation.entity.Reservation;
 
 /**
@@ -13,5 +14,6 @@ import reservation.entity.Reservation;
  * @author Administrateur
  */
 public interface ReservationCrudService extends CrudRepository<Reservation, Long>{
+    
     
 }

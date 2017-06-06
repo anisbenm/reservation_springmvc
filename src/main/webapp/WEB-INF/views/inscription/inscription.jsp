@@ -26,7 +26,7 @@
             <label> Login:</label>
             <form:input path="login"/>
             <label>Mot de passe : </label>
-            <form:input path="mdpasse"/>
+            <form:input path="mdpasse" type="password"/>
             <label>Email : </label>
             <form:input path="email"/>            
             <input type="Submit"/>
