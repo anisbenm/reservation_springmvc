@@ -22,7 +22,7 @@ public interface ReservationClientServiceCrud extends CrudRepository<Reservation
     
   
     @Query("SELECT r FROM Reservation r JOIN r.client c WHERE c.id=?1 AND r.etatReservation=?2 OrderBy r.date ")
-    public List<Reservation> reservationClient(long id_client, Reservation.EtatReservation etat);
+    public List<Reservation> reservationClient(long id_client, Reservation.EtatReservation etat); 
       
       
     

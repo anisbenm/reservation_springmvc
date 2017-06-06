@@ -57,7 +57,7 @@ public class ReservationClientController {
 
         // passer la reservation à la vue
         model.addAttribute("reservation", reservation);
-        return "/reservationClient/details.jsp";
+        return "/reservationclient/details.jsp";
       
      
     
