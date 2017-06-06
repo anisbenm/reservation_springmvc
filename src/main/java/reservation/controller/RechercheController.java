@@ -24,4 +24,11 @@ public class RechercheController {
         model.addAttribute("rec", rec);
     return "/rechercher/chambres.jsp";
     }
+    
+   @RequestMapping(value = "/recherche", method = RequestMethod.POST)
+    public String rechercherPost(Model model){
+        rechercheDTO rec=new rechercheDTO();
+        model.addAttribute("rec", rec);
+    return "/rechercher/chambres.jsp";
+    }
 }

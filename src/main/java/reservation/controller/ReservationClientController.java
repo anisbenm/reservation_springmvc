@@ -60,6 +60,17 @@ public class ReservationClientController {
       
      
     
+    @RequestMapping(value = "/reservationClient/details", method = RequestMethod.GET) 
+    public String details ( Model model , @PathVariable("id") Long id){
+      
+        Reservation reservation = serviceReservationClient.findOne(id);
+
+        // passer la reservation à la vue
+        model.addAttribute("reservation", reservation);
+        return "/reservationclient/details.jsp";
+      
+     
+    
   }
 
 }
