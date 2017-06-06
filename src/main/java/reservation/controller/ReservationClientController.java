@@ -9,6 +9,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import reservation.dto.ReservationDTO;
@@ -49,10 +50,15 @@ public class ReservationClientController {
         
     }
    @RequestMapping(value = "/reservationClient/details", method = RequestMethod.GET) 
-    public String details (Model model , long id){
+    public String details ( Model model , @PathVariable("id") Long id){
       
+         Reservation reservation = serviceReservationClient.findOne(id);
+
+        // passer cet hotel à la vue
+        model.addAttribute("reservation", reservation);
+        return "/reservationClient/details.jsp";
       
-       return"";
+     
     
   }
 
