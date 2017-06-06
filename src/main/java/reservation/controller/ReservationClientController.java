@@ -30,7 +30,7 @@ public class ReservationClientController {
      ReservationClientServiceCrud serviceReservationClient;
     
     @RequestMapping(value = "/reservationClient", method = RequestMethod.GET)
-    public String ReservationClientGet(Model model){
+    public String ReservationClientGet(Model model){ 
        
         long id_client =1;
         

@@ -5,6 +5,7 @@
  */
 package reservation.service;
 
+import java.util.Date;
 import org.springframework.data.repository.CrudRepository;
 import reservation.entity.Client;
 import reservation.entity.Reservation;
@@ -15,5 +16,6 @@ import reservation.entity.Reservation;
  */
 public interface ReservationCrudService extends CrudRepository<Reservation, Long>{
     
-    
+    public long countByChambresIdAndDateCheckInBetween(long idch,Date debut,Date fin);
+    public long countByChambresIdAndDateCheckOutBetween(long idch,Date debut,Date fin);
 }

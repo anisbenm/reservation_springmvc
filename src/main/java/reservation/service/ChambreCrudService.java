@@ -16,4 +16,11 @@ import reservation.entity.Chambre;
 public interface ChambreCrudService extends CrudRepository<Chambre, Long>{
     //rechercher chambres dont l'hotel est dans la localite priécisée et ayant une capacité>à la capacité voulu
 //    public List<Chambre> findAllBy
-}
+    
+    
+    //toutes les chambre de la loclité dont le nb personnes est convenable
+    public List<Chambre> findAllByHotelAdresseLocaliteAndNbPersonnesGreaterThanEqualOrderByHotel(String l,int nbp);
+    
+   
+    
+ }
