@@ -15,6 +15,7 @@ import reservation.entity.Hotel;
  * @author Administrateur
  */
 public interface HotelCrudService extends CrudRepository<Hotel, Long>{
-    @Query("SELECT h FROM Hotel h where h.adresse.localite=?1")
-    public List<Hotel> listHotelParLocalite(String l);
+    //pas besoin
+//    @Query("SELECT h FROM Hotel h where h.adresse.localite=?1")
+//    public List<Hotel> listHotelParLocalite(String l);
 }
