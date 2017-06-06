@@ -15,6 +15,15 @@ public class rechercheDTO {
     private String localite;
     private Date debut;
     private Date fin;
+    private int nbp;
+
+    public int getNbp() {
+        return nbp;
+    }
+
+    public void setNbp(int nbp) {
+        this.nbp = nbp;
+    }
 
     public String getLocalite() {
         return localite;
