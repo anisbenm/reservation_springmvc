@@ -5,6 +5,7 @@
  */
 package reservation.controller;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,13 +32,19 @@ public class ReservationClientController {
     public String ReservationClientGet(Model model){
        
         long id_client =1;
-        String etat="PAYE";
+        
+        Reservation.EtatReservation etat=Reservation.EtatReservation.PAYEE ;
+        Reservation.EtatReservation etat2=Reservation.EtatReservation.ANNULEE;
+        Reservation.EtatReservation etat3=Reservation.EtatReservation.A_PAYER;
         //une nouvelle reservation 
-       Reservation reservations = (Reservation) serviceReservationClient.reservationClient(id_client, etat);
-        
-        
-        model.addAttribute("reservations",  reservations);
-        return "/reservationClient/liste.jsp";
+        List <Reservation> reservationsPayee = (List <Reservation>)  serviceReservationClient.reservationClient(id_client, etat);
+        List <Reservation> reservationsAnnulee = (List <Reservation>)  serviceReservationClient.reservationClient(id_client, etat2);
+        List <Reservation> reservationsAPayee = (List <Reservation>)  serviceReservationClient.reservationClient(id_client, etat3);
+        model.addAttribute("reservationsPayee",  reservationsPayee);
+        model.addAttribute("reservationsAnnulee",  reservationsAnnulee);
+        model.addAttribute("reservationsAPayee",  reservationsAPayee);
+         
+        return "/reservationclient/liste.jsp";
        
         //calcule de prix
        
