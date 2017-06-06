@@ -5,11 +5,9 @@
  */
 package reservation.controller;
 
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import reservation.dto.ReservationDTO;
@@ -33,44 +31,23 @@ public class ReservationClientController {
     public String ReservationClientGet(Model model){
        
         long id_client =1;
-        
-        Reservation.EtatReservation etat=Reservation.EtatReservation.PAYEE ;
-        Reservation.EtatReservation etat2=Reservation.EtatReservation.ANNULEE;
-        Reservation.EtatReservation etat3=Reservation.EtatReservation.A_PAYER;
+        String etat="PAYE";
         //une nouvelle reservation 
-        List <Reservation> reservationsPayee = (List <Reservation>)  serviceReservationClient.reservationClient(id_client, etat);
-        List <Reservation> reservationsAnnulee = (List <Reservation>)  serviceReservationClient.reservationClient(id_client, etat2);
-        List <Reservation> reservationsAPayee = (List <Reservation>)  serviceReservationClient.reservationClient(id_client, etat3);
-        model.addAttribute("reservationsPayee",  reservationsPayee);
-        model.addAttribute("reservationsAnnulee",  reservationsAnnulee);
-        model.addAttribute("reservationsAPayee",  reservationsAPayee);
-         
-        return "/reservationclient/liste.jsp";
+       Reservation reservations = (Reservation) serviceReservationClient.reservationClient(id_client, etat);
+        
+        
+        model.addAttribute("reservations",  reservations);
+        return "/reservationClient/liste.jsp";
+       
+        //calcule de prix
        
         
+        // Enregistrer reservation 
+     
+       
+       
+      
+        
     }
-   @RequestMapping(value = "/reservationClient/details", method = RequestMethod.GET) 
-    public String details ( Model model , @PathVariable("id") Long id){
-      
-         Reservation reservation = serviceReservationClient.findOne(id);
-
-        // passer cet hotel à la vue
-        model.addAttribute("reservation", reservation);
-        return "/reservationClient/details.jsp";
-      
-     
     
-    @RequestMapping(value = "/reservationClient/details", method = RequestMethod.GET) 
-    public String details ( Model model , @PathVariable("id") Long id){
-      
-        Reservation reservation = serviceReservationClient.findOne(id);
-
-        // passer la reservation à la vue
-        model.addAttribute("reservation", reservation);
-        return "/reservationclient/details.jsp";
-      
-     
-    
-  }
-
 }
