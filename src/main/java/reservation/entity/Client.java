@@ -73,6 +73,14 @@ public class Client implements Serializable {
         return hash;
     }
 
+    public Utilisateur getUtil() {
+        return util;
+    }
+
+    public void setUtil(Utilisateur util) {
+        this.util = util;
+    }
+
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set

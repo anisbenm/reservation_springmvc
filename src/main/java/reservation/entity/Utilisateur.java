@@ -80,6 +80,14 @@ public class Utilisateur implements Serializable {
     public void setType(TypeUser type) {
         this.type = type;
     }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
     
     
 
