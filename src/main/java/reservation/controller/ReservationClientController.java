@@ -46,15 +46,14 @@ public class ReservationClientController {
          
         return "/reservationclient/liste.jsp";
        
-        //calcule de prix
-       
-        
-        // Enregistrer reservation 
-     
-       
-       
-      
         
     }
+   @RequestMapping(value = "/reservationClient/details", method = RequestMethod.GET) 
+    public String details (Model model , long id){
+      
+      
+       return"";
     
+  }
+
 }
