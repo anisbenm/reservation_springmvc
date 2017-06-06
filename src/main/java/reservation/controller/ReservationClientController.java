@@ -45,7 +45,7 @@ public class ReservationClientController {
         model.addAttribute("reservationsAnnulee",  reservationsAnnulee);
         model.addAttribute("reservationsAPayee",  reservationsAPayee);
          
-        return "/reservationclient/liste.jsp";
+        return "/reservationclient/liste.jsp"; 
        
         
     }
