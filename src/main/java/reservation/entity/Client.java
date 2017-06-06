@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -25,11 +26,14 @@ public class Client implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    @OneToOne(mappedBy = "client")
+    private Utilisateur util;
 
     private String nom;
     private String prenom;
     @OneToMany(mappedBy = "client")
-    private List<Reservation> reservations=new ArrayList<>();
+    private List<Reservation> reservations=new ArrayList<>();//il faut l'initialiser
     public Long getId() {
         return id;
     }
