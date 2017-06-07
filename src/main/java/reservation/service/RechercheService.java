@@ -8,15 +8,19 @@ package reservation.service;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import reservation.entity.Chambre;
 
 /**
  *
  * @author Administrateur
  */
+@Service////////////////////////////////non crud pour autowired
 public class RechercheService {
+    
     @Autowired
     ChambreCrudService chserv;
+    
     @Autowired 
     ReservationCrudService resServ;
     

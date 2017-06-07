@@ -27,6 +27,8 @@
             <form:input path="prix"/>
             <label>Hotel : </label>
             <form:select items="${hotels}" itemValue="id" itemLabel="nom" path="hotel.id"></form:select>
+            <label>Nombre de personnes : </label>
+            <form:input path="nbPersonnes"/>
             <input type="Submit"/>
         </form:form>        
     </contenue>

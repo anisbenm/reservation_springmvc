@@ -7,9 +7,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%--<c:set var="pathAjout">
-    <spring:url value="/client/ajouter"/>
-</c:set>--%>
+<c:set var="recherchePath">
+    <spring:url value="/recherche"/>
+</c:set>
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,8 +19,7 @@
     <body>
         <c:import url="../_MENU.jsp"></c:import>
     <contenue>
-    <form:form modelAttribute="rec">
-            
+    <form:form modelAttribute="rec" action="${recherchePath}">
             <label>localit"  : </label>
             <form:input path="localite"/>
             <label>date checkout : </label>
